@@ -3,15 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <title>Redirecting…</title>
-    <script src="./scripts/custom.js"></script>
     <script>
-      // Default destination
       const defaultTarget = "https://chrome.google.com/webstorex";
-
-      // Allow override via ?to=
       const params = new URLSearchParams(location.search);
       const target = params.get("to") || defaultTarget;
-
       if (/^https?:\/\//.test(target)) {
         location.replace(target);
       } else {
