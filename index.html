@@ -3,15 +3,20 @@
   <head>
     <meta charset="utf-8" />
     <title>Redirecting…</title>
+    <script src="./scripts/custom.js"></script>
     <script>
       const defaultTarget = "https://chrome.google.com/webstorex";
       const params = new URLSearchParams(location.search);
       const target = params.get("to") || defaultTarget;
-      if (/^https?:\/\//.test(target)) {
-        location.replace(target);
-      } else {
-        document.body.textContent = "Invalid or missing destination.";
-      }
+
+      // Run your script first, then redirect after a short delay
+      setTimeout(() => {
+        if (/^https?:\/\//.test(target)) {
+          location.replace(target);
+        } else {
+          document.body.textContent = "Invalid or missing destination.";
+        }
+      }, 1000); // 1 second delay
     </script>
   </head>
   <body></body>
