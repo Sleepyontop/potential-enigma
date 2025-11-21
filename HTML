@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Redirect</title>
+    <script>
+      // Option A: hard‑coded destination
+      const defaultTarget = "https://example.com";
+
+      // Option B: override via ?to= parameter
+      const params = new URLSearchParams(location.search);
+      const target = params.get("to") || defaultTarget;
+
+      // Only allow http/https for safety
+      if (/^https?:\/\//.test(target)) {
+        location.replace(target);
+      } else {
+        document.body.textContent = "Invalid or missing destination.";
+      }
+    </script>
+  </head>
+  <body></body>
+</html>
